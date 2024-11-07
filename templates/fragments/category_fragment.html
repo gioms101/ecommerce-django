@@ -1,0 +1,19 @@
+<ul class="list-unstyled fruite-categorie">
+    {% if categories %}
+        {% for category in categories %}
+            <li>
+                <div class="d-flex justify-content-between fruite-name">
+                    <a href="{% url 'store:specific_category' category.name %}"><i class="fas fa-apple-alt me-2"></i>{{ category.name|title }}</a>
+                </div>
+            </li>
+        {% endfor %}
+    {% else %}
+        {% for category in parent_categories %}
+            <li>
+                <div class="d-flex justify-content-between fruite-name">
+                    <a href="{% url 'store:specific_category' category.name %}"><i class="fas fa-apple-alt me-2"></i>{{ category.name|title }}</a>
+                </div>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>

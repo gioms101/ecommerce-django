@@ -1,0 +1,43 @@
+{% load custom_tags %}
+
+{% for product in products %}
+        <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="rounded position-relative fruite-item">
+                <div class="fruite-img">
+                    <img src="{{ product.image.url }}" class="img-fluid w-100 rounded-top" alt="" />
+                </div>
+                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
+                    {% for tag in product.tags.all %}
+                        {{  tag.name }}
+                    {% endfor %}
+                </div>
+                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                    <h4>{{ product.name|cut:'-'|title }}</h4>  {# 'cut' is custom filter tag, defined in templatetags/custom.tags.py #}
+                    <form method="POST" action=".">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between flex-lg-wrap">
+                            <p class="text-dark fs-5 fw-bold mb-0">{{ product.price }} GEL</p>
+                            <input type="hidden" name="product" value="{{ product.id }}">
+                            <input type="hidden" name="cart" value="{{ user.id|default:'' }}"> {# user.id == cart.id #}
+                            <button  class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+<div class="col-12">
+    <div class="pagination d-flex justify-content-center mt-5">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class='rounded'>&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class='rounded'>Previous</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a   href="?page={{ page_obj.next_page_number }}" class='rounded'>Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class='rounded'>Last &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+

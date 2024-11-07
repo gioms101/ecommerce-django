@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid contact py-5">
+            <div class="container py-5">
+                <div class="p-5 bg-light rounded">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="text-center mx-auto" style="max-width: 700px;">
+                                <h1 class="text-primary">Login Page</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <br>
+                                <button class="btn border border-secondary rounded-pill px-3 text-primary" type="submit">Login</button>
+                                <a class="btn-link" href="{% url 'store:register' %}" style="padding-left: 30px">Create An Account</a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

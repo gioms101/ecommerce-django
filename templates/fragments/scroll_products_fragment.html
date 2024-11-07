@@ -1,0 +1,21 @@
+{% load custom_tags %}
+
+{% for product in products %}
+    <div class="border border-primary rounded position-relative vesitable-item">
+        <div class="vesitable-img">
+            <img src="{{ product.image.url }}" class="img-fluid w-100 rounded-top" alt="" />
+        </div>
+        <div class="p-4 rounded-bottom">
+            <h4>{{ product.name|cut:'-' | title }}</h4>
+            <form method="POST" action=".">
+                {% csrf_token %}
+                <div class="d-flex justify-content-between flex-lg-wrap">
+                    <p class="text-dark fs-5 fw-bold mb-0">{{ product.price }} GEL</p>
+                    <input type="hidden" name="product" value="{{ product.id }}">
+                    <input type="hidden" name="cart" value="{{ user.id }}"> {# user.id == cart.id #}
+                    <button  class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endfor %}
