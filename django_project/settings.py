@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-7xac&j9qo9i14_i&6^vf1@5zxw4t#qqf=j131b+isf*pdq#4me
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -38,13 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'order',
-    "debug_toolbar",
     'user',
     'rosetta',
 ]
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

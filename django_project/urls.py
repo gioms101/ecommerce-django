@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf.urls.i18n import i18n_patterns
 
 
@@ -28,7 +27,7 @@ urlpatterns = i18n_patterns(
     path('', include('store.urls')),
     path('order/', include('order.urls')),
     prefix_default_language=False
-) + debug_toolbar_urls()
+)
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
