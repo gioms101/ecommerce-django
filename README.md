@@ -2,6 +2,13 @@
 
 This project is a simple e-commerce application built with Django. It allows users to browse products, filter them by categories and tags, and add them to their cart or delete an order. It includes custom error handling, page caching, and a dynamic navbar that adjusts based on user authentication. The project also includes  user registration, login, logout, and tracking user activity.
 
+
+## Deployment
+This project is deployed on PythonAnywhere and is live at the following URL:  
+[**https://giorgimaisuradze.pythonanywhere.com/**](https://giorgimaisuradze.pythonanywhere.com)  
+Click the link above to check it out!
+
+
 ## Features
 - **User Registration**:  Allows new users to register with the `RegisterUserForm`.
 - **User Login**: Allows users to log in with their credentials.
